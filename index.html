@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-image: url(https://neilpatel.com/wp-content/uploads/2017/08/colors.jpg);
+			background-repeat: no-repeat;
+			background-size: 100%;
+			margin-left: 40%;
+			margin-top: 10%;
+		}
+		#pass{
+			padding: 1%;
+			border-radius: 20px;
+		}
+		#newvalue{
+			padding: 1%;
+			border-radius: 20px;
+		}
+		#click{
+			padding: 1%;
+			background-color: darkcyan;
+			color: white;
+			margin-left: 7%;
+			border-radius: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		function save(){
+			const name=document.getElementById("newvalue").value
+			const passcode=document.getElementById("pass").value
+			console.log(name)
+			fetch("http://localhost:4000/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:name,password:passcode})
+		})
+	}
+	</script>
+</head>
+<body>
+	<h1>LOGIN PAGE</h1>
+	<input id="newvalue"type="text" placeholder="enter value" />
+	<p><input placeholder="enter password" id="pass" /></p>
+	<p><button onclick="save()" id=click>submit</button></p>
+
+</body>
+</html>
